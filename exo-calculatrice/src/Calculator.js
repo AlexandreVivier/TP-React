@@ -47,9 +47,7 @@ function Calculator() {
 
   function handleClick(e) {
     const value = e.target.value;
-    // if (state.total != null) {
-    //   dispatch({ type: "calculate" });
-    // }
+
     if (!isNaN(value) || value === ".") {
       dispatch({ type: "addInput", payload: value });
     } else if (value === "+" || value === "-" || value === "*") {
