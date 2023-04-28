@@ -71,8 +71,8 @@ function Calculator() {
     { label: "3", value: "3" },
     { label: "2", value: "2" },
     { label: "1", value: "1" },
-    { label: "0", value: "0" },
     { label: ".", value: "." },
+    { label: "0", value: "0" },
     { label: "+", value: "+" },
     { label: "-", value: "-" },
     { label: "*", value: "*" },
@@ -82,15 +82,19 @@ function Calculator() {
 
   return (
     <div class="container mt-5">
-        <div class="">
-            <input type="text" value={state.input} class="form-control form-control-lg text-center" />
+      <div class="row">
+      <h1>Calculatrice :</h1>
+      </div>
+        <div class="row justify-content-center">
+          <div class="col-6">
+          <input type="text" value={state.input} class="form-control form-control-lg text-center" />
+          {buttons.map((button, index) => (
+          <button key={index} value={button.value} onClick={handleClick} class="btn btn-success m-3 col-3">
+            {button.label}
+          </button>
+          ))}
+          </div>
         </div>
-      {buttons.map((button, index) => (
-        <button key={index} value={button.value} onClick={handleClick} class="btn btn-success m-3 col-1">
-          {button.label}
-        </button>
-      ))}
-      
     </div>
   );
 }
