@@ -9,7 +9,8 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case "addInput":
-      return { ...state, input: state.input + action.payload };
+      return { ...state, 
+        input: state.input + action.payload };
     case "setOperator":
       return {
         ...state,
@@ -33,7 +34,7 @@ function reducer(state, action) {
           result = state.total;
           break;
       }
-      return { input: result.toString(), total: null, operator: null };
+      return { input: result.toString(), total: result, operator: null };
     case "reset":
       return initialState;
     default:
@@ -46,12 +47,15 @@ function Calculator() {
 
   function handleClick(e) {
     const value = e.target.value;
+    // if (state.total != null) {
+    //   dispatch({ type: "calculate" });
+    // }
     if (!isNaN(value) || value === ".") {
       dispatch({ type: "addInput", payload: value });
     } else if (value === "+" || value === "-" || value === "*") {
       dispatch({ type: "setOperator", payload: value });
-    } else if (value === "=") {
-      dispatch({ type: "calculate" });
+   } else if (value === "=") {
+     dispatch({ type: "calculate" });
     } else if (value === "reset") {
       dispatch({ type: "reset" });
     }
